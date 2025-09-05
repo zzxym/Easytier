@@ -70,11 +70,11 @@ impl WindowsBuild {
         let target = std::env::var("TARGET").unwrap_or_default();
 
         if target.contains("x86_64") {
-            println!("cargo:rustc-link-search=native=easytier/third_party/");
+            println!("cargo:rustc-link-search=native=./third_party/");
         } else if target.contains("i686") {
-            println!("cargo:rustc-link-search=native=easytier/third_party/i686/");
+            println!("cargo:rustc-link-search=native=./third_party/i686/");
         } else if target.contains("aarch64") {
-            println!("cargo:rustc-link-search=native=easytier/third_party/arm64/");
+            println!("cargo:rustc-link-search=native=./third_party/arm64/");
         }
 
         let protoc_path = if let Some(o) = Self::check_protoc_exist() {

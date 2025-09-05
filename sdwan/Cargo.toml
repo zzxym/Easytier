@@ -87,7 +87,7 @@ http = { version = "1", default-features = false, features = [
 tokio-rustls = { version = "0.26", default-features = false, optional = true }
 
 # for tap device
-tun = { package = "tun-easytier", git="https://github.com/EasyTier/rust-tun", features = [
+tun = { package = "tun-sdwan", git="https://github.com/easytier/rust-tun", features = [
     "async",
 ], optional = true }
 # for net ns

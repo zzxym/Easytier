@@ -19,7 +19,7 @@ use service_manager::*;
 use tabled::settings::Style;
 use tokio::time::timeout;
 
-use easytier::{
+use sdwan::{
     common::{
         config::PortForwardConfig,
         constants::SDWAN_VERSION,
@@ -91,9 +91,9 @@ enum SubCommand {
     PeerCenter,
     #[command(about = "show vpn portal (wireguard) info")]
     VpnPortal,
-    #[command(about = "inspect self easytier-core status")]
+    #[command(about = "inspect self sdwan-core status")]
     Node(NodeArgs),
-    #[command(about = "manage easytier-core as a system service")]
+    #[command(about = "manage sdwan-core as a system service")]
     Service(ServiceArgs),
     #[command(about = "show tcp/kcp proxy status")]
     Proxy,
@@ -309,7 +309,7 @@ struct InstallArgs {
     #[arg(long)]
     disable_restart_on_failure: Option<bool>,
 
-    #[arg(long, help = "path to easytier-core binary")]
+    #[arg(long, help = "path to sdwan-core binary")]
     core_path: Option<PathBuf>,
 
     #[arg(long)]
@@ -318,7 +318,7 @@ struct InstallArgs {
     #[arg(
         trailing_var_arg = true,
         allow_hyphen_values = true,
-        help = "args to pass to easytier-core"
+        help = "args to pass to sdwan-core"
     )]
     core_args: Option<Vec<OsString>>,
 }
@@ -501,7 +501,7 @@ impl CommandHandler<'_> {
                     cidr: route.ipv4_addr.map(|ip| ip.to_string()).unwrap_or_default(),
                     ipv4: route
                         .ipv4_addr
-                        .map(|ip: easytier::proto::common::Ipv4Inet| ip.address.unwrap_or_default())
+                        .map(|ip: sdwan::proto::common::Ipv4Inet| ip.address.unwrap_or_default())
                         .map(|ip| ip.to_string())
                         .unwrap_or_default(),
                     hostname: route.hostname.clone(),
@@ -1768,7 +1768,7 @@ async fn main() -> Result<(), Error> {
                             .unwrap()
                             .parent()
                             .unwrap()
-                            .join("easytier-core");
+                            .join("sdwan-core");
 
                         if cfg!(target_os = "windows") {
                             ret.set_extension("exe");
@@ -1777,7 +1777,7 @@ async fn main() -> Result<(), Error> {
                         ret
                     });
                     let bin_path = std::fs::canonicalize(bin_path).map_err(|e| {
-                        anyhow::anyhow!("failed to get easytier core application: {}", e)
+                        anyhow::anyhow!("failed to get sdwan core application: {}", e)
                     })?;
                     let bin_args = install_args.core_args.unwrap_or_default();
                     let work_dir = install_args.service_work_dir.unwrap_or_else(|| {
@@ -1990,7 +1990,7 @@ async fn main() -> Result<(), Error> {
         },
         SubCommand::GenAutocomplete { shell } => {
             let mut cmd = Cli::command();
-            easytier::print_completions(shell, &mut cmd, "easytier-cli");
+            sdwan::print_completions(shell, &mut cmd, "sdwan-cli");
         }
     }
 
@@ -2015,7 +2015,7 @@ mod win_service_manager {
 
     use winreg::{enums::*, RegKey};
 
-    use easytier::common::constants::WIN_SERVICE_WORK_DIR_REG_KEY;
+    use sdwan::common::constants::WIN_SERVICE_WORK_DIR_REG_KEY;
 
     use serde::{Deserialize, Serialize};
 

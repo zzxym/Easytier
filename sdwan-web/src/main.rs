@@ -9,7 +9,7 @@ use clap::Parser;
 use sdwan::{
     common::{
         config::{ConsoleLoggerConfig, FileLoggerConfig, LoggingConfigLoader},
-        constants::sdwan_VERSION,
+        constants::SDWAN_VERSION,
         error::Error,
         network::{local_ipv4, local_ipv6},
     },
