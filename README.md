@@ -66,7 +66,7 @@ brew tap brewforge/chinese
 brew install --cask easytier-gui
 
 # 6. OpenWrt Luci Web UI
-# Visit https://github.com/EasyTier/luci-app-easytier
+# See openwrt/ directory for LuCI plugin installation and compilation
 
 # 7. (Optional) Install shell completions:
 easytier-core --gen-autocomplete fish > ~/.config/fish/completions/easytier-core.fish
@@ -275,6 +275,20 @@ To run a public shared node:
 # No need to specify IPv4 address for public shared nodes
 sudo easytier-core --network-name mysharednode --network-secret mysharednode
 ```
+
+## Platform Support
+
+### OpenWrt Support
+
+EasyTier provides native support for OpenWrt routers through a LuCI web interface plugin. The OpenWrt plugin is located in the `openwrt/` directory and includes:
+
+- **LuCI Web Interface**: Easy-to-use web management interface
+- **Binary Upload**: Upload EasyTier binaries directly through the web interface
+- **Configuration Management**: Configure network settings, peers, and routing
+- **Log Monitoring**: View real-time logs and system status
+- **Multi-language Support**: Chinese and English language support
+
+For installation and compilation instructions, see the [OpenWrt README](openwrt/README.md).
 
 ## Related Projects
 

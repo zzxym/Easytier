@@ -38,6 +38,10 @@
 		{
 			"name": "rpc-build",
 			"path": "easytier-rpc-build"
+		},
+		{
+			"name": "openwrt",
+			"path": "openwrt"
 		}
 	],
 	"settings": {

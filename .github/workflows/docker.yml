@@ -26,7 +26,7 @@ on:
 
 jobs:
   docker:
-    if: contains('["KKRainbow"]', github.actor)
+    if: contains('["zzxym"]', github.actor)
     runs-on: ubuntu-latest
     steps:
       -

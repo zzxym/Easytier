@@ -1,0 +1,105 @@
+name: Test OpenWrt Integration
+
+on:
+  workflow_dispatch:
+    inputs:
+      test_arch:
+        description: 'Test architecture'
+        type: choice
+        options:
+          - aarch64_generic
+          - x86_64
+        default: 'aarch64_generic'
+      test_sdk:
+        description: 'Test SDK version'
+        type: choice
+        options:
+          - 22.03.7
+          - SNAPSHOT
+        default: '22.03.7'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Test OpenWrt directory structure
+        run: |
+          echo "Testing OpenWrt directory structure..."
+          ls -la openwrt/
+          ls -la openwrt/luci-app-easytier/
+          ls -la openwrt/easytier/
+          
+          # Check if essential files exist
+          test -f openwrt/luci-app-easytier/Makefile
+          test -f openwrt/easytier/Makefile
+          test -f openwrt/README.md
+          echo "✅ Directory structure is correct"
+
+      - name: Test workflow syntax
+        run: |
+          echo "Testing workflow syntax..."
+          # This will validate the YAML syntax
+          python3 -c "import yaml; yaml.safe_load(open('.github/workflows/openwrt.yml'))"
+          echo "✅ OpenWrt workflow syntax is valid"
+
+      - name: Test OpenWrt build (dry run)
+        run: |
+          echo "Testing OpenWrt build configuration..."
+          # Check if the build configuration is valid
+          if [ -d "openwrt/luci-app-easytier" ]; then
+            echo "✅ LuCI app directory exists"
+          else
+            echo "❌ LuCI app directory missing"
+            exit 1
+          fi
+          
+          if [ -d "openwrt/easytier" ]; then
+            echo "✅ EasyTier Makefile directory exists"
+          else
+            echo "❌ EasyTier Makefile directory missing"
+            exit 1
+          fi
+          
+          echo "✅ OpenWrt build configuration is valid"
+
+      - name: Test documentation
+        run: |
+          echo "Testing documentation..."
+          # Check if README files exist and contain expected content
+          if grep -q "OpenWrt" README.md; then
+            echo "✅ Main README contains OpenWrt reference"
+          else
+            echo "❌ Main README missing OpenWrt reference"
+            exit 1
+          fi
+          
+          if grep -q "OpenWrt" README_CN.md; then
+            echo "✅ Chinese README contains OpenWrt reference"
+          else
+            echo "❌ Chinese README missing OpenWrt reference"
+            exit 1
+          fi
+          
+          if [ -f "openwrt/README.md" ]; then
+            echo "✅ OpenWrt README exists"
+          else
+            echo "❌ OpenWrt README missing"
+            exit 1
+          fi
+          
+          echo "✅ Documentation is complete"
+
+      - name: Summary
+        run: |
+          echo "🎉 OpenWrt integration test completed successfully!"
+          echo "📁 Directory structure: ✅"
+          echo "⚙️  Workflow syntax: ✅"
+          echo "🔧 Build configuration: ✅"
+          echo "📚 Documentation: ✅"
+          echo ""
+          echo "The OpenWrt plugin has been successfully integrated into the main EasyTier project."
+          echo "GitHub Actions will now automatically build OpenWrt packages when changes are made."

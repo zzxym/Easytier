@@ -66,7 +66,7 @@ brew tap brewforge/chinese
 brew install --cask easytier-gui
 
 # 6. OpenWrt Luci Web 界面
-# 访问 https://github.com/EasyTier/luci-app-easytier
+# 查看 openwrt/ 目录了解 LuCI 插件安装和编译方法
 
 # 7.（可选）安装 Shell 补全功能：
 # Fish 补全
@@ -276,6 +276,20 @@ sudo easytier-core --network-name mysharednode --network-secret mysharednode
 ```
 
 网络设置成功后，您可以轻松配置它以在系统启动时自动启动。请参阅 [一键注册服务指南](https://easytier.cn/en/guide/network/oneclick-install-as-service.html) 了解如何将 EasyTier 注册为系统服务。
+
+## 平台支持
+
+### OpenWrt 支持
+
+EasyTier 通过 LuCI Web 界面插件为 OpenWrt 路由器提供原生支持。OpenWrt 插件位于 `openwrt/` 目录中，包括：
+
+- **LuCI Web 界面**：易于使用的 Web 管理界面
+- **二进制文件上传**：通过 Web 界面直接上传 EasyTier 二进制文件
+- **配置管理**：配置网络设置、对等节点和路由
+- **日志监控**：查看实时日志和系统状态
+- **多语言支持**：中文和英文语言支持
+
+有关安装和编译说明，请参阅 [OpenWrt README](openwrt/README.md)。
 
 ## 相关项目
 
