@@ -220,7 +220,7 @@ impl From<RoutePeerInfo> for crate::proto::cli::Route {
                 Some(stun_info)
             },
             inst_id: val.inst_id.map(|x| x.to_string()).unwrap_or_default(),
-            version: val.version,
+            version: val.version.to_string(),
             feature_flag: val.feature_flag,
 
             next_hop_peer_id_latency_first: None,
