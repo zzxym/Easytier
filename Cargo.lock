@@ -6993,7 +6993,7 @@ checksum = "0495e4577c672de8254beb68d01a9b62d0e8a13c099edecdbedccce3223cd29f"
 
 [[package]]
 name = "sdwan"
-version = "25.9.3"
+version = "25.9.4"
 dependencies = [
  "aes-gcm",
  "anyhow",
