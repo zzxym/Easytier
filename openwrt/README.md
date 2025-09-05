@@ -1,6 +1,6 @@
-# EasyTier OpenWrt LuCI Plugin
+# SDWAN OpenWrt LuCI Plugin
 
-这是EasyTier在OpenWrt平台上的LuCI Web界面插件。
+这是SDWAN在OpenWrt平台上的LuCI Web界面插件。
 
 ## 依赖
 

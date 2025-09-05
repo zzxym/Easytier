@@ -1,13 +1,13 @@
-# EasyTier
+# SDWAN
 
-[![Github release](https://img.shields.io/github/v/tag/EasyTier/EasyTier)](https://github.com/EasyTier/EasyTier/releases)
-[![GitHub](https://img.shields.io/github/license/EasyTier/EasyTier)](https://github.com/EasyTier/EasyTier/blob/main/LICENSE)
-[![GitHub last commit](https://img.shields.io/github/last-commit/EasyTier/EasyTier)](https://github.com/EasyTier/EasyTier/commits/main)
-[![GitHub issues](https://img.shields.io/github/issues/EasyTier/EasyTier)](https://github.com/EasyTier/EasyTier/issues)
-[![GitHub Core Actions](https://github.com/EasyTier/EasyTier/actions/workflows/core.yml/badge.svg)](https://github.com/EasyTier/EasyTier/actions/workflows/core.yml)
-[![GitHub GUI Actions](https://github.com/EasyTier/EasyTier/actions/workflows/gui.yml/badge.svg)](https://github.com/EasyTier/EasyTier/actions/workflows/gui.yml)
-[![GitHub Test Actions](https://github.com/EasyTier/EasyTier/actions/workflows/test.yml/badge.svg)](https://github.com/EasyTier/EasyTier/actions/workflows/test.yml)
-[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/EasyTier/EasyTier)
+[![Github release](https://img.shields.io/github/v/tag/zzxym/sdwan)](https://github.com/zzxym/sdwan/releases)
+[![GitHub](https://img.shields.io/github/license/zzxym/sdwan)](https://github.com/zzxym/sdwan/blob/main/LICENSE)
+[![GitHub last commit](https://img.shields.io/github/last-commit/zzxym/sdwan)](https://github.com/zzxym/sdwan/commits/main)
+[![GitHub issues](https://img.shields.io/github/issues/zzxym/sdwan)](https://github.com/zzxym/sdwan/issues)
+[![GitHub Core Actions](https://github.com/zzxym/sdwan/actions/workflows/core.yml/badge.svg)](https://github.com/zzxym/sdwan/actions/workflows/core.yml)
+[![GitHub GUI Actions](https://github.com/zzxym/sdwan/actions/workflows/gui.yml/badge.svg)](https://github.com/zzxym/sdwan/actions/workflows/gui.yml)
+[![GitHub Test Actions](https://github.com/zzxym/sdwan/actions/workflows/test.yml/badge.svg)](https://github.com/zzxym/sdwan/actions/workflows/test.yml)
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/zzxym/sdwan)
 
 [简体中文](/README_CN.md) | [English](/README.md)
 
@@ -18,7 +18,7 @@
 <img src="assets/running-page.png" width="300" alt="运行页面">
 </p>
 
-📚 **[完整文档](https://easytier.cn)** | 🖥️ **[Web 控制台](https://easytier.cn/web)** | 📝 **[下载发布版本](https://github.com/EasyTier/EasyTier/releases)** | 🧩 **[第三方工具](https://easytier.cn/guide/installation_gui.html#%E7%AC%AC%E4%B8%89%E6%96%B9%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2)** | ❤️ **[赞助](#赞助)**
+📚 **[完整文档](https://easytier.cn)** | 🖥️ **[Web 控制台](https://easytier.cn/web)** | 📝 **[下载发布版本](https://github.com/zzxym/sdwan/releases)** | 🧩 **[第三方工具](https://easytier.cn/guide/installation_gui.html#%E7%AC%AC%E4%B8%89%E6%96%B9%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2)** | ❤️ **[赞助](#赞助)**
 
 ## 特性
 
@@ -50,38 +50,37 @@
 
 ```bash
 # 1. 下载预编译二进制文件（推荐，支持所有平台）
-# 访问 https://github.com/EasyTier/EasyTier/releases
+# 访问 https://github.com/zzxym/sdwan/releases
 
 # 2. 通过 cargo 安装（最新开发版本）
-cargo install --git https://github.com/EasyTier/EasyTier.git easytier
+cargo install --git https://github.com/zzxym/sdwan.git sdwan
 
 # 3. 通过 Docker 安装
 # 参见 https://easytier.cn/guide/installation.html#%E5%AE%89%E8%A3%85%E6%96%B9%E5%BC%8F
 
 # 4. Linux 快速安装
-wget -O- https://raw.githubusercontent.com/EasyTier/EasyTier/main/script/install.sh | sudo bash
+wget -O- https://raw.githubusercontent.com/zzxym/sdwan/main/script/install.sh | sudo bash
 
 # 5. MacOS 通过 Homebrew 安装
 brew tap brewforge/chinese
-brew install --cask easytier-gui
+brew install --cask sdwan-gui
 
 # 6. OpenWrt Luci Web 界面
 # 查看 openwrt/ 目录了解 LuCI 插件安装和编译方法
 
 # 7.（可选）安装 Shell 补全功能：
 # Fish 补全
-easytier-core --gen-autocomplete fish > ~/.config/fish/completions/easytier-core.fish
-easytier-cli gen-autocomplete fish > ~/.config/fish/completions/easytier-cli.fish
-
+sdwan-core --gen-autocomplete fish > ~/.config/fish/completions/sdwan-core.fish
+sdwan-cli gen-autocomplete fish > ~/.config/fish/completions/sdwan-cli.fish
 ```
 
 ### 🚀 基本用法
 
 #### 使用共享节点快速组网
 
-EasyTier 支持使用共享公共节点快速组网。当您没有公网 IP 时，可以使用 EasyTier 社区提供的免费共享节点。节点会自动尝试 NAT 穿透并建立 P2P 连接。当 P2P 失败时，数据将通过共享节点中继。
+SDWAN 支持使用共享公共节点快速组网。当您没有公网 IP 时，可以使用 SDWAN 社区提供的免费共享节点。节点会自动尝试 NAT 穿透并建立 P2P 连接。当 P2P 失败时，数据将通过共享节点中继。
 
-当前部署的共享公共节点是 `tcp://public.easytier.cn:11010`。
+当前部署的共享公共节点是 `tcp://sdwan.xiaolin.cc:10010`。
 
 使用共享节点时，每个进入网络的节点需要提供相同的 `--network-name` 和 `--network-secret` 参数作为网络的唯一标识符。
 
@@ -91,14 +90,14 @@ EasyTier 支持使用共享公共节点快速组网。当您没有公网 IP 时�
 
 ```bash
 # 以管理员权限运行
-sudo easytier-core -d --network-name abc --network-secret abc -p tcp://public.easytier.cn:11010
+sudo sdwan-core -d --network-name abc --network-secret abc -p tcp://sdwan.xiaolin.cc:10010
 ```
 
 2. 在节点 B 上运行：
 
 ```bash
 # 以管理员权限运行
-sudo easytier-core -d --network-name abc --network-secret abc -p tcp://public.easytier.cn:11010
+sudo sdwan-core -d --network-name abc --network-secret abc -p tcp://public.easytier.cn:10010
 ```
 
 执行成功后，可以使用 `easytier-cli` 检查网络状态：
@@ -125,7 +124,7 @@ ping 10.126.126.2
 
 ```bash
 # 连接多个共享节点
-sudo easytier-core -d --network-name abc --network-secret abc -p tcp://public.easytier.cn:11010 -p udp://public.easytier.cn:11010
+sudo sdwan-core -d --network-name abc --network-secret abc -p tcp://public.easytier.cn:10010 -p udp://public.easytier.cn:11010
 ```
 
 #### 去中心化组网

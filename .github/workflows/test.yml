@@ -1,4 +1,4 @@
-name: EasyTier Test
+name: SDWAN Test
 
 on:
   push:
@@ -28,7 +28,7 @@ jobs:
           # All of these options are optional, so you can remove them if you are happy with the defaults
           concurrent_skipping: 'never'
           skip_after_successful_duplicate: 'true'
-          paths: '["Cargo.toml", "Cargo.lock", "easytier/**", ".github/workflows/test.yml", ".github/workflows/install_gui_dep.sh", ".github/workflows/install_rust.sh"]'
+          paths: '["Cargo.toml", "Cargo.lock", "sdwan/**", ".github/workflows/test.yml", ".github/workflows/install_gui_dep.sh", ".github/workflows/install_rust.sh"]'
   test:
     runs-on: ubuntu-22.04
     needs: pre_job
@@ -79,7 +79,7 @@ jobs:
       - name: Install frontend dependencies
         run: |
           pnpm -r install
-          pnpm -r --filter "./easytier-web/*"  build
+          pnpm -r --filter "./sdwan-web/*"  build
 
       - name: Cargo cache
         uses: actions/cache@v4
@@ -104,7 +104,7 @@ jobs:
         if: ${{ !cancelled() }}
         # NOTE: tauri need `dist` dir in build.rs
         run: |
-          mkdir -p easytier-gui/dist
+          mkdir -p sdwan-gui/dist
           cargo clippy --all-targets --all-features --all -- -D warnings
 
       - name: Run tests

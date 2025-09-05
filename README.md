@@ -1,13 +1,13 @@
-# EasyTier
+# SDWAN
 
-[![Github release](https://img.shields.io/github/v/tag/EasyTier/EasyTier)](https://github.com/EasyTier/EasyTier/releases)
-[![GitHub](https://img.shields.io/github/license/EasyTier/EasyTier)](https://github.com/EasyTier/EasyTier/blob/main/LICENSE)
-[![GitHub last commit](https://img.shields.io/github/last-commit/EasyTier/EasyTier)](https://github.com/EasyTier/EasyTier/commits/main)
-[![GitHub issues](https://img.shields.io/github/issues/EasyTier/EasyTier)](https://github.com/EasyTier/EasyTier/issues)
-[![GitHub Core Actions](https://github.com/EasyTier/EasyTier/actions/workflows/core.yml/badge.svg)](https://github.com/EasyTier/EasyTier/actions/workflows/core.yml)
-[![GitHub GUI Actions](https://github.com/EasyTier/EasyTier/actions/workflows/gui.yml/badge.svg)](https://github.com/EasyTier/EasyTier/actions/workflows/gui.yml)
-[![GitHub Test Actions](https://github.com/EasyTier/EasyTier/actions/workflows/test.yml/badge.svg)](https://github.com/EasyTier/EasyTier/actions/workflows/test.yml)
-[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/EasyTier/EasyTier)
+[![Github release](https://img.shields.io/github/v/tag/zzxym/sdwan)](https://github.com/zzxym/sdwan/releases)
+[![GitHub](https://img.shields.io/github/license/zzxym/sdwan)](https://github.com/zzxym/sdwan/blob/main/LICENSE)
+[![GitHub last commit](https://img.shields.io/github/last-commit/zzxym/sdwan)](https://github.com/zzxym/sdwan/commits/main)
+[![GitHub issues](https://img.shields.io/github/issues/zzxym/sdwan)](https://github.com/zzxym/sdwan/issues)
+[![GitHub Core Actions](https://github.com/zzxym/sdwan/actions/workflows/core.yml/badge.svg)](https://github.com/zzxym/sdwan/actions/workflows/core.yml)
+[![GitHub GUI Actions](https://github.com/zzxym/sdwan/actions/workflows/gui.yml/badge.svg)](https://github.com/zzxym/sdwan/actions/workflows/gui.yml)
+[![GitHub Test Actions](https://github.com/zzxym/sdwan/actions/workflows/test.yml/badge.svg)](https://github.com/zzxym/sdwan/actions/workflows/test.yml)
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/zzxym/sdwan)
 
 [简体中文](/README_CN.md) | [English](/README.md)
 
@@ -18,7 +18,7 @@
 <img src="assets/running-page.png" width="300" alt="running page">
 </p>
 
-📚 **[Full Documentation](https://easytier.cn/en/)** | 🖥️ **[Web Console](https://easytier.cn/web)** | 📝 **[Download Releases](https://github.com/EasyTier/EasyTier/releases)** | 🧩 **[Third Party Tools](https://easytier.cn/en/guide/installation_gui.html#third-party-graphical-interfaces)** | ❤️ **[Sponsor](#sponsor)**
+📚 **[Full Documentation](https://easytier.cn/en/)** | 🖥️ **[Web Console](https://easytier.cn/web)** | 📝 **[Download Releases](https://github.com/zzxym/sdwan/releases)** | 🧩 **[Third Party Tools](https://easytier.cn/en/guide/installation_gui.html#third-party-graphical-interfaces)** | ❤️ **[Sponsor](#sponsor)**
 
 ## Features
 
@@ -50,37 +50,36 @@ Choose the installation method that best suits your needs:
 
 ```bash
 # 1. Download pre-built binary (Recommended, All platforms supported)
-# Visit https://github.com/EasyTier/EasyTier/releases
+# Visit https://github.com/zzxym/sdwan/releases
 
 # 2. Install via cargo (Latest development version)
-cargo install --git https://github.com/EasyTier/EasyTier.git easytier
+cargo install --git https://github.com/zzxym/sdwan.git sdwan
 
 # 3. Install via Docker
 # See https://easytier.cn/en/guide/installation.html#installation-methods
 
 # 4. Linux Quick Install
-wget -O- https://raw.githubusercontent.com/EasyTier/EasyTier/main/script/install.sh | sudo bash
+wget -O- https://raw.githubusercontent.com/zzxym/sdwan/main/script/install.sh | sudo bash
 
 # 5. MacOS via Homebrew
 brew tap brewforge/chinese
-brew install --cask easytier-gui
+brew install --cask sdwan-gui
 
 # 6. OpenWrt Luci Web UI
 # See openwrt/ directory for LuCI plugin installation and compilation
 
 # 7. (Optional) Install shell completions:
-easytier-core --gen-autocomplete fish > ~/.config/fish/completions/easytier-core.fish
-easytier-cli gen-autocomplete fish > ~/.config/fish/completions/easytier-cli.fish
-
+sdwan-core --gen-autocomplete fish > ~/.config/fish/completions/sdwan-core.fish
+sdwan-cli gen-autocomplete fish > ~/.config/fish/completions/sdwan-cli.fish
 ```
 
 ### 🚀 Basic Usage
 
 #### Quick Networking with Shared Nodes
 
-EasyTier supports quick networking using shared public nodes. When you don't have a public IP, you can use the free shared nodes provided by the EasyTier community. Nodes will automatically attempt NAT traversal and establish P2P connections. When P2P fails, data will be relayed through shared nodes.
+SDWAN supports quick networking using shared public nodes. When you don't have a public IP, you can use the free shared nodes provided by the SDWAN community. Nodes will automatically attempt NAT traversal and establish P2P connections. When P2P fails, data will be relayed through shared nodes.
 
-The currently deployed shared public node is `tcp://public.easytier.cn:11010`.
+The currently deployed shared public node is `tcp://sdwan.xiaolin.cc:10010`.
 
 When using shared nodes, each node entering the network needs to provide the same `--network-name` and `--network-secret` parameters as the unique identifier of the network.
 
@@ -90,14 +89,14 @@ Taking two nodes as an example (Please use more complex network name to avoid co
 
 ```bash
 # Run with administrator privileges
-sudo easytier-core -d --network-name abc --network-secret abc -p tcp://public.easytier.cn:11010
+sudo sdwan-core -d --network-name abc --network-secret abc -p tcp://sdwan.xiaolin.cc:10010
 ```
 
 2. Run on Node B:
 
 ```bash
 # Run with administrator privileges
-sudo easytier-core -d --network-name abc --network-secret abc -p tcp://public.easytier.cn:11010
+sudo sdwan-core -d --network-name abc --network-secret abc -p tcp://sdwan.xiaolin.cc:10010
 ```
 
 After successful execution, you can check the network status using `easytier-cli`:
@@ -124,7 +123,7 @@ To improve availability, you can connect to multiple shared nodes simultaneously
 
 ```bash
 # Connect to multiple shared nodes
-sudo easytier-core -d --network-name abc --network-secret abc -p tcp://public.easytier.cn:11010 -p udp://public.easytier.cn:11010
+sudo sdwan-core -d --network-name abc --network-secret abc -p tcp://sdwan.xiaolin.cc:10010 -p udp://sdwan.xiaolin.cc:10010
 ```
 
 Once your network is set up successfully, you can easily configure it to start automatically on system boot. Refer to the [One-Click Register Service guide](https://easytier.cn/en/guide/network/oneclick-install-as-service.html) for step-by-step instructions on registering EasyTier as a system service.
@@ -141,9 +140,9 @@ sudo easytier-core -i 10.144.144.1
 ```
 
 After startup, this node will listen on the following ports by default:
-- TCP: 11010
-- UDP: 11010
-- WebSocket: 11011
+- TCP: 10010
+- UDP: 10010
+- WebSocket: 10011
 - WebSocket SSL: 11012
 - WireGuard: 11013
 
@@ -151,7 +150,7 @@ After startup, this node will listen on the following ports by default:
 
 ```bash
 # Connect to the first node using its public IP
-sudo easytier-core -i 10.144.144.2 -p udp://FIRST_NODE_PUBLIC_IP:11010
+sudo sdwan-core -i 10.144.144.2 -p udp://FIRST_NODE_PUBLIC_IP:10010
 ```
 
 3. Verify Connection:
@@ -174,7 +173,7 @@ For more nodes to join the network, they can connect to any existing node in the
 
 ```bash
 # Connect to any existing node using its public IP
-sudo easytier-core -i 10.144.144.3 -p udp://ANY_EXISTING_NODE_PUBLIC_IP:11010
+sudo sdwan-core -i 10.144.144.3 -p udp://ANY_EXISTING_NODE_PUBLIC_IP:10010
 ```
 
 ### 🔍 Advanced Features

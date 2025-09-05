@@ -1,4 +1,4 @@
-name: EasyTier OHOS
+name: sdwan OHOS
 
 on:
   push:
@@ -30,7 +30,7 @@ jobs:
           concurrent_skipping: 'same_content_newer'
           skip_after_successful_duplicate: 'true'
           cancel_others: 'true'
-          paths: '["Cargo.toml", "Cargo.lock", "easytier/**", "easytier-contrib/easytier-ohrs/**", ".github/workflows/ohos.yml", ".github/workflows/install_rust.sh"]'
+          paths: '["Cargo.toml", "Cargo.lock", "sdwan/**", "sdwan-contrib/sdwan-ohrs/**", ".github/workflows/ohos.yml", ".github/workflows/install_rust.sh"]'
   build-ohos:
     runs-on: ubuntu-latest
     needs: pre_job
@@ -93,7 +93,7 @@ jobs:
           sudo chmod +x $OHOS_NDK_HOME/native/llvm/aarch64-unknown-linux-ohos-clang.sh
 
       - name: Build
-        working-directory: ./easytier-contrib/easytier-ohrs
+        working-directory: ./sdwan-contrib/sdwan-ohrs
         run: |
           sudo apt-get install -y llvm clang lldb lld
           sudo apt-get install -y protobuf-compiler
@@ -101,14 +101,14 @@ jobs:
           source env.sh
           cargo install ohrs
           rustup target add aarch64-unknown-linux-ohos
-          cargo update easytier
+          cargo update sdwan
           ohrs doctor
           ohrs build --release --arch aarch
           
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: easytier-ohos
-          path: ./easytier-contrib/easytier-ohrs/dist/arm64-v8a/libeasytier_ohrs.so
+          name: sdwan-ohos
+          path: ./sdwan-contrib/sdwan-ohrs/dist/arm64-v8a/libsdwan_ohrs.so
           retention-days: 5
           if-no-files-found: error

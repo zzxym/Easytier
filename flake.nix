@@ -1,5 +1,5 @@
 {
-  description = "EasyTier development environment";
+  description = "sdwan development environment";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";

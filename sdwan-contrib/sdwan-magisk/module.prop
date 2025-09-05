@@ -1,0 +1,7 @@
+id=sdwan_magisk
+name=SDWAN_Magisk
+version=v2.4.3
+versionCode=1
+author=SDWAN
+description=sdwan magisk module @SDWAN(https://github.com/zzxym/SDWAN)
+updateJson=https://raw.githubusercontent.com/zzxym/SDWAN/refs/heads/main/sdwan-contrib/sdwan-magisk/magisk_update.json

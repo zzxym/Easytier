@@ -6,7 +6,7 @@ settings:
 
 importers:
 
-  easytier-contrib/easytier-uptime/frontend:
+  sdwan-contrib/sdwan-uptime/frontend:
     dependencies:
       '@element-plus/icons-vue':
         specifier: ^2.3.1
@@ -17,7 +17,7 @@ importers:
       dayjs:
         specifier: ^1.11.13
         version: 1.11.13
-      easytier-uptime-frontend:
+      sdwan-uptime-frontend:
         specifier: 'link:'
         version: 'link:'
       element-plus:
@@ -43,7 +43,7 @@ importers:
         specifier: ^7.1.2
         version: 7.1.2(jiti@2.4.0)(tsx@4.19.2)(yaml@2.6.0)
 
-  easytier-gui:
+  sdwan-gui:
     dependencies:
       '@primevue/themes':
         specifier: 4.3.3
@@ -69,9 +69,9 @@ importers:
       aura:
         specifier: link:@primevue\themes\aura
         version: link:@primevue/themes/aura
-      easytier-frontend-lib:
+      sdwan-frontend-lib:
         specifier: workspace:*
-        version: link:../easytier-web/frontend-lib
+        version: link:../sdwan-web/frontend-lib
       ip-num:
         specifier: 1.5.1
         version: 1.5.1
@@ -179,7 +179,7 @@ importers:
         specifier: ^2.1.10
         version: 2.1.10(typescript@5.6.3)
 
-  easytier-web/frontend:
+  sdwan-web/frontend:
     dependencies:
       '@modyfi/vite-plugin-yaml':
         specifier: ^1.1.0
@@ -193,7 +193,7 @@ importers:
       axios:
         specifier: ^1.7.7
         version: 1.7.7
-      easytier-frontend-lib:
+      sdwan-frontend-lib:
         specifier: workspace:*
         version: link:../frontend-lib
       primevue:
@@ -240,7 +240,7 @@ importers:
         specifier: ^2.1.10
         version: 2.1.10(typescript@5.6.3)
 
-  easytier-web/frontend-lib:
+  sdwan-web/frontend-lib:
     dependencies:
       '@primevue/themes':
         specifier: 4.3.3

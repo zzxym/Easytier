@@ -30,12 +30,12 @@ jobs:
         run: |
           echo "Testing OpenWrt directory structure..."
           ls -la openwrt/
-          ls -la openwrt/luci-app-easytier/
-          ls -la openwrt/easytier/
+          ls -la openwrt/luci-app-sdwan/
+          ls -la openwrt/sdwan/
           
           # Check if essential files exist
-          test -f openwrt/luci-app-easytier/Makefile
-          test -f openwrt/easytier/Makefile
+          test -f openwrt/luci-app-sdwan/Makefile
+          test -f openwrt/sdwan/Makefile
           test -f openwrt/README.md
           echo "✅ Directory structure is correct"
 
@@ -50,17 +50,17 @@ jobs:
         run: |
           echo "Testing OpenWrt build configuration..."
           # Check if the build configuration is valid
-          if [ -d "openwrt/luci-app-easytier" ]; then
+          if [ -d "openwrt/luci-app-sdwan" ]; then
             echo "✅ LuCI app directory exists"
           else
             echo "❌ LuCI app directory missing"
             exit 1
           fi
           
-          if [ -d "openwrt/easytier" ]; then
-            echo "✅ EasyTier Makefile directory exists"
+          if [ -d "openwrt/sdwan" ]; then
+            echo "✅ sdwan Makefile directory exists"
           else
-            echo "❌ EasyTier Makefile directory missing"
+            echo "❌ sdwan Makefile directory missing"
             exit 1
           fi
           
@@ -101,5 +101,5 @@ jobs:
           echo "🔧 Build configuration: ✅"
           echo "📚 Documentation: ✅"
           echo ""
-          echo "The OpenWrt plugin has been successfully integrated into the main EasyTier project."
+          echo "The OpenWrt plugin has been successfully integrated into the main sdwan project."
           echo "GitHub Actions will now automatically build OpenWrt packages when changes are made."

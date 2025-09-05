@@ -1,25 +1,25 @@
-name: EasyTier Release
+name: sdwan Release
 
 on:
   workflow_dispatch:
     inputs:
       core_run_id:
-        description: 'The run id of EasyTier-Core Action in EasyTier repo'
+        description: 'The run id of sdwan-Core Action in sdwan repo'
         type: number
         default: 10322498549
         required: true
       gui_run_id:
-        description: 'The run id of EasyTier-GUI Action in EasyTier repo'
+        description: 'The run id of sdwan-GUI Action in sdwan repo'
         type: number
         default: 10322498557
         required: true
       mobile_run_id:
-        description: 'The run id of EasyTier-Mobile Action in EasyTier repo'
+        description: 'The run id of sdwan-Mobile Action in sdwan repo'
         type: number
         default: 10322498555
         required: true
       openwrt_run_id:
-        description: 'The run id of EasyTier-OpenWrt Action in EasyTier repo'
+        description: 'The run id of sdwan-OpenWrt Action in sdwan repo'
         type: number
         default: 10322498560
         required: true
@@ -51,7 +51,7 @@ jobs:
         with:
           github_token: ${{secrets.GITHUB_TOKEN}}
           run_id: ${{ inputs.core_run_id }}
-          repo: EasyTier/EasyTier
+          repo: zzxym/sdwan
           path: release_assets
 
       - name: Download GUI Artifact
@@ -59,7 +59,7 @@ jobs:
         with:
           github_token: ${{secrets.GITHUB_TOKEN}}
           run_id: ${{ inputs.gui_run_id }}
-          repo: EasyTier/EasyTier
+          repo: zzxym/sdwan
           path: release_assets_nozip
 
       - name: Download Mobile Artifact
@@ -67,7 +67,7 @@ jobs:
         with:
           github_token: ${{secrets.GITHUB_TOKEN}}
           run_id: ${{ inputs.mobile_run_id }}
-          repo: EasyTier/EasyTier
+          repo: zzxym/sdwan
           path: release_assets_nozip
 
       - name: Download OpenWrt Artifacts
@@ -75,7 +75,7 @@ jobs:
         with:
           github_token: ${{secrets.GITHUB_TOKEN}}
           run_id: ${{ inputs.openwrt_run_id }}
-          repo: EasyTier/EasyTier
+          repo: zzxym/sdwan
           path: release_assets_openwrt
 
       - name: Zip release assets
@@ -91,8 +91,8 @@ jobs:
           ls -l -R ./
           chmod -R 755 .
           for x in `ls`; do
-            if [ "$x" = "Easytier-Magisk" ]; then
-              # for Easytier-Magisk, make sure files are in the root of the zip
+            if [ "$x" = "sdwan-Magisk" ]; then
+              # for sdwan-Magisk, make sure files are in the root of the zip
               cd $x;
               zip -r ../../zipped_assets/$x-${VERSION}.zip .;
               cd ..;
@@ -106,11 +106,11 @@ jobs:
           ls -l -R ./
           chmod -R 755 .
           for x in `ls`; do
-            if [[ "$x" =~ ^EasyTier-OpenWrt-.*$ ]]; then
+            if [[ "$x" =~ ^sdwan-OpenWrt-.*$ ]]; then
               # Extract architecture and SDK info from artifact name
-              ARCH_SDK=$(echo $x | sed 's/EasyTier-OpenWrt-//')
+              ARCH_SDK=$(echo $x | sed 's/sdwan-OpenWrt-//')
               cd $x;
-              zip -r ../../zipped_assets/EasyTier-OpenWrt-${ARCH_SDK}-${VERSION}.zip .;
+              zip -r ../../zipped_assets/sdwan-OpenWrt-${ARCH_SDK}-${VERSION}.zip .;
               cd ..;
             fi
           done

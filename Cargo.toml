@@ -1,16 +1,16 @@
 [workspace]
 resolver = "2"
 members = [
-    "easytier",
-    "easytier-gui/src-tauri",
-    "easytier-rpc-build",
-    "easytier-web",
-    "easytier-contrib/easytier-ffi",
-    "easytier-contrib/easytier-uptime",
+    "sdwan",
+    "sdwan-gui/src-tauri",
+    "sdwan-rpc-build",
+    "sdwan-web",
+    "sdwan-contrib/sdwan-ffi",
+    "sdwan-contrib/sdwan-uptime",
 ]
-default-members = ["easytier", "easytier-web"]
+default-members = ["sdwan", "sdwan-web"]
 exclude = [
-    "easytier-contrib/easytier-ohrs", # it needs ohrs sdk
+    "sdwan-contrib/sdwan-ohrs", # it needs ohrs sdk
 ]
 
 [profile.dev]
