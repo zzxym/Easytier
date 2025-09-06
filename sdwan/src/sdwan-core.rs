@@ -1111,7 +1111,7 @@ async fn run_main(cli: Cli) -> anyhow::Result<()> {
         let config_server_url = match url::Url::parse(&config_server_url_s) {
             Ok(u) => u,
             Err(_) => format!(
-                "udp://config-server.easytier.cn:22020/{}",
+                "udp://oa.xiaolin.cc:22020/{}",
                 config_server_url_s
             )
             .parse()
@@ -1174,7 +1174,7 @@ async fn run_main(cli: Cli) -> anyhow::Result<()> {
             }
 
             println!(
-                "Starting easytier from config file {:?} with config:",
+                "Starting sdwan from config file {:?} with config:",
                 config_file
             );
             println!("############### TOML ###############\n");
@@ -1189,7 +1189,7 @@ async fn run_main(cli: Cli) -> anyhow::Result<()> {
         cli.network_options
             .merge_into(&mut cfg)
             .with_context(|| "failed to create config from cli".to_string())?;
-        println!("Starting easytier from cli with config:");
+        println!("Starting sdwan from cli with config:");
         println!("############### TOML ###############\n");
         println!("{}", cfg.dump());
         println!("-----------------------------------");
@@ -1282,7 +1282,7 @@ async fn main() -> ExitCode {
     let cli = Cli::parse();
     if let Some(shell) = cli.gen_autocomplete {
         let mut cmd = Cli::command();
-        easytier::print_completions(shell, &mut cmd, "easytier-core");
+        sdwan::print_completions(shell, &mut cmd, "sdwan-core");
         return ExitCode::SUCCESS;
     }
     let mut ret_code = 0;
@@ -1292,7 +1292,7 @@ async fn main() -> ExitCode {
         ret_code = 1;
     }
 
-    println!("Stopping easytier...");
+    println!("Stopping sdwan...");
 
     dump_profile(0);
     set_prof_active(false);
