@@ -26,6 +26,12 @@ rustflags = ["-C", "target-feature=+crt-static"]
 [target.'cfg(all(windows, target_env = "msvc"))']
 rustflags = ["-C", "target-feature=+crt-static"]
 
+[target.x86_64-pc-windows-msvc]
+rustflags = [
+    "-C", "target-feature=+crt-static",
+    "-L", "d:/easytier代码区/sdwan/sdwan/third_party"
+]
+
 [target.mipsel-unknown-linux-musl]
 linker = "mipsel-unknown-linux-muslsf-gcc"
 rustflags = [

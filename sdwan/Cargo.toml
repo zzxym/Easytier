@@ -164,6 +164,11 @@ mimalloc = { version = "*", optional = true }
 # mips
 atomic-shim = "0.2.0"
 
+# 为不支持AtomicU64的架构(如MIPS/RISC-V)添加依赖覆盖
+[target.'cfg(any(target_arch = "mips", target_arch = "mipsel", target_arch = "mips64", target_arch = "mips64el", target_arch = "riscv32", target_arch = "riscv64"))'.dependencies]
+# 覆盖fastbloom的依赖，使用不依赖AtomicU64的版本或禁用相关功能
+# 注意：这需要在顶级Cargo.toml中设置[patch]或[replace]
+
 smoltcp = { version = "0.12.0", optional = true, default-features = false, features = [
     "std",
     "medium-ip",
@@ -297,7 +302,12 @@ tokio-socks = "0.5.2"
 
 
 [features]
+# 为支持AtomicU64的架构提供完整功能
 default = ["wireguard", "websocket", "smoltcp", "tun", "socks5", "quic"]
+
+# 为不支持AtomicU64的架构（如MIPS/RISC-V）禁用quic功能（避免fastbloom依赖）
+[target.'cfg(any(target_arch = "mips", target_arch = "mipsel", target_arch = "mips64", target_arch = "mips64el", target_arch = "riscv32", target_arch = "riscv64"))'.features]
+default = ["wireguard", "websocket", "smoltcp", "tun", "socks5"]
 full = [
     "websocket",
     "wireguard",

@@ -5,8 +5,7 @@ mod elevate;
 
 use std::collections::BTreeMap;
 
-use sdwan:{
-    common::config::{ConfigLoader, FileLoggerConfig, LoggingConfigBuilder, TomlConfigLoader},
+use sdwan::{    common::config::{ConfigLoader, FileLoggerConfig, LoggingConfigBuilder, TomlConfigLoader},
     instance_manager::NetworkInstanceManager,
     launcher::{ConfigSource, NetworkConfig, NetworkInstanceRunningInfo},
     utils::{self, NewFilterSender},
